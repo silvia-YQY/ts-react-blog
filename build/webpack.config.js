@@ -1,6 +1,7 @@
 const { resolve } = require('./utils');
 const jsRules = require('./rules/jsRules');
 const plugins = require('./plugins');
+const styleRules = require('./rules/styleRules');
 
 /**
  * @type {import('webpack').Configuration}
@@ -14,8 +15,15 @@ module.exports = {
         path: resolve('dist'),
         filename: '[name].js'
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        alias: {
+            '@views': resolve('src/containers/views'),
+            '@shared': resolve('src/containers/shared')
+        }
+    },
     plugins: [...plugins],
     module: {
-        rules: [...jsRules]
+        rules: [...jsRules, ...styleRules]
     }
 };
