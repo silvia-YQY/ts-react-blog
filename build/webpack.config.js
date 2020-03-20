@@ -19,8 +19,12 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
             '@views': resolve('src/containers/views'),
-            '@shared': resolve('src/containers/shared')
+            '@shared': resolve('src/containers/shared'),
+            '@services': resolve('src/services')
         }
+    },
+    devServer: {
+        historyApiFallback: true
     },
     plugins: [...plugins],
     module: {
